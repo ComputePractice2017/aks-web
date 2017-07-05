@@ -4,9 +4,9 @@
            
             <form class="form-inline">
 
-                <label class="sr-only" for="inlineFormInput">Name</label>
+                <label class="sr-only" for="inlineFormInput">ask</label>
                 
-                <input type="text" v-model="newcontact.name" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Введите здесь вопрос">
+                <input type="text" v-model="newcontact.ask" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Введите здесь вопрос">
                 
                 <label class="sr-only" for="inlineFormInputGroup">Username</label>
                      
@@ -24,8 +24,8 @@
                 </thead>
                 <tbody>
                     <tr v-for="contact in contactList">
-                        <td>{{contact.name}}</td>
-                        <td>{{contact.email}}</td>
+                        <td>{{contact.ask}}</td>
+                        <td>{{contact.answer}}</td>
                         
                     </tr>
                 </tbody>
@@ -43,8 +43,8 @@ export default {
       contacts: null,
       edit: false,
       newcontact: {
-        'name': '',
-        'email': ''
+        'ask': '',
+        'answer': ''
       },
       search: ''
     }
@@ -53,7 +53,7 @@ export default {
     contactList: function () {
       var search = this.search
       var filterFn = function (item) {
-        return item.name.includes(search) || item.email.includes(search)
+        return item.ask.includes(search) || item.answer.includes(search)
       }
       if (this.search !== '') {
         return this.contacts.filter(filterFn)
@@ -75,11 +75,11 @@ export default {
         this.contacts = []
       }
       var obj = {
-        'name': '',
-        'email': ''
+        'ask': '',
+        'answer': ''
       }
-      obj.name = this.newcontact.name
-      obj.email = this.newcontact.email
+      obj.ask = this.newcontact.ask
+      obj.answer = this.newcontact.answer
       this.contacts.push(obj)
       this.$http.post('/persons', obj).then(response => {
         console.log(this.response)
@@ -99,8 +99,8 @@ export default {
       })
       this.edit = false
       var obj = {
-        'name': '',
-        'email': ''
+        'ask': '',
+        'answer': ''
       }
       this.newcontact = obj
     },
@@ -111,7 +111,7 @@ export default {
         console.log(response)
       })
       var eq = function (input) {
-        return input.name === obj.name && input.email === obj.email
+        return input.ask === obj.ask && input.answer === obj.answer
       }
       var index = this.contacts.findIndex(eq)
       if (index > -1) {

@@ -2,17 +2,17 @@
     <div class="otvet">
         <div class="container">
              <form class="form-inline">
-                <label class="sr-only" for="inlineFormInput">Name</label>
-                <input type="text" v-model="newcontact.name" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Вопрос">
+                <label class="sr-only" for="inlineFormInput">ask</label>
+                
     
                 <label class="sr-only" for="inlineFormInputGroup">Username</label>
                 <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                    <input type="email" v-model="newcontact.email"  class="form-control" id="inlineFormInputGroup" placeholder="Ответ">
+            
                 </div>
       
             </form>
-            <button v-on:click="addNewContact" v-if="!edit" type="button" class="btn btn-primary">Добавить</button>
-                <button v-on:click="endEdit" v-if="edit" type="button" class="btn btn-danger">Сохранить</button>
+           
+                <button v-on:click="endEdit" v-if="edit" type="button" class="btn btn-danger">Ответить</button>
             <table class="table">
                 <thead>
                     <tr>
@@ -23,10 +23,10 @@
                 </thead>
                 <tbody>
                     <tr v-for="contact in contactList">
-                        <td>{{contact.name}}</td>
-                        <td>{{contact.email}}</td>
+                        <td>{{contact.ask}}</td>
+                        <td>{{contact.answer}}</td>
                         <td>
-                            <button v-on:click="editContact(contact)" v-if="!edit" type="button" class="btn btn-warning">Изменить</button>
+                            <button v-on:click="editContact(contact)" v-if="!edit" type="button" class="btn btn-warning">JОтветить</button>
                             <button v-on:click="deleteContact(contact)" v-if="!edit" type="button" class="btn btn-danger">Удалить</button>
                         </td>
                     </tr>
@@ -46,8 +46,8 @@ export default {
       contacts: null,
       edit: false,
       newcontact: {
-        'name': '',
-        'email': ''
+        'ask': '',
+        'answer': ''
       },
       search: ''
     }
@@ -56,7 +56,7 @@ export default {
     contactList: function () {
       var search = this.search
       var filterFn = function (item) {
-        return item.name.includes(search) || item.email.includes(search)
+        return item.ask.includes(search) || item.answer.includes(search)
       }
       if (this.search !== '') {
         return this.contacts.filter(filterFn)
@@ -65,7 +65,7 @@ export default {
     }
   },
   mounted: function () {
-    this.$http.get('/persons').then(response => {
+    this.$http.get('/fask/{guid}/{guid1}').then(response => {
       this.contacts = response.body
       console.log(this.contacts)
     }, response => {
@@ -78,11 +78,11 @@ export default {
         this.contacts = []
       }
       var obj = {
-        'name': '',
-        'email': ''
+        'ask': '',
+        'answer': ''
       }
-      obj.name = this.newcontact.name
-      obj.email = this.newcontact.email
+      obj.ask = this.newcontact.ask
+      obj.answer = this.newcontact.answer
       this.contacts.push(obj)
       this.$http.post('/persons', obj).then(response => {
         console.log(this.response)
@@ -102,8 +102,8 @@ export default {
       })
       this.edit = false
       var obj = {
-        'name': '',
-        'email': ''
+        'nask': '',
+        'answer': ''
       }
       this.newcontact = obj
     },
@@ -114,7 +114,7 @@ export default {
         console.log(response)
       })
       var eq = function (input) {
-        return input.name === obj.name && input.email === obj.email
+        return input.ask === obj.ask && input.answer === obj.answer
       }
       var index = this.contacts.findIndex(eq)
       if (index > -1) {
