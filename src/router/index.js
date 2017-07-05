@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import vopros from '@/components/vopros'
+import otvet from '@/components/otvet'
 
 Vue.use(Router)
 
@@ -8,8 +8,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'vopros',
-      component: vopros
+      name: 'otvet',
+      component: otvet
     }
   ]
 })
