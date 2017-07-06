@@ -56,8 +56,8 @@ export default {
       obj.surl = this.newssilka.surl
       this.ssilka.push(obj)
 
-      this.otvet = '/' + obj.murl + '/' + obj.surl
-      this.vopros = '/' + obj.murl
+      this.otvet = '/' + this.newssilka.murl + '/' + this.newssilka.surl
+      this.vopros = '/' + this.newssilka.murl
       
     
     }
