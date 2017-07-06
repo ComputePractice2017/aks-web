@@ -24,6 +24,7 @@ export default {
   name: 'mainpage',
   data () {
     return {
+      ssilka: null,
       msg: 'Anonimus fask',
       message: '',
       message1: '',
@@ -33,8 +34,20 @@ export default {
   },
   methods: {
     ssilki: function () {
-      this.otvet = 'otvety'
-      this.vopros = 'vopros'
+      this.ssilka.push(obj)
+      this.$http.post('/fask', obj).then(response => {
+        console.log(this.response)
+      }, response => {
+        console.log(response)
+      })
+      this.otvet = ('/' + obj.murl + '/' + obj.surl, this.newssilka)
+      this.vopros = ('/' + obj.murl, this.newssilka)
+      var obj = {
+        'murl': '',
+        'surl': ''
+      }
+      obj.murl = this.newssilka.murl
+      obj.surl = this.newssilka.surl
     }
   }
 }
