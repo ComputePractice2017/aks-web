@@ -26,13 +26,11 @@ export default {
     return {
       ssilka: null,
       msg: 'Anonimus fask',
-      message: '',
-      message1: '',
       vopros: '',
-      otvet: ''
-      newssilka:{
-        'murl':'',
-        'surl':''
+      otvet: '',
+      newssilka: {
+        'murl': '',
+        'surl': ''
       },
     }
   },
@@ -50,16 +48,17 @@ export default {
       if (this.ssilka === null) {
         this.ssilka = []
       }
-      this.ssilka.push(obj)
-      obj.murl = this.newssilka.murl
-      obj.surl = this.newssilka.surl
-      this.ssilka.push(obj)
-      this.otvet = ('/' + obj.murl + '/' + obj.surl, this.newssilka)
-      this.vopros = ('/' + obj.murl, this.newssilka)
-      var obj = {
+       var obj = {
         'murl': '',
         'surl': ''
       }
+      obj.murl = this.newssilka.murl
+      obj.surl = this.newssilka.surl
+      this.ssilka.push(obj)
+
+      this.otvet = '/' + obj.murl + '/' + obj.surl
+      this.vopros = '/' + obj.murl
+      
     
     }
   }

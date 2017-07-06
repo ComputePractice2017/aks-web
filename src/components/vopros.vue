@@ -1,7 +1,7 @@
 <template>
     <div class="vopros">
         <div class="container">
-          {{$route.params.vopros}}
+       
            
             <form class="form-inline">
 
