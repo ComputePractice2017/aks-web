@@ -108,7 +108,7 @@ export default {
       this.newcontact = obj
     },
     deleteContact: function (obj) {
-      this.$http.delete('//fask/' + this.newcontact.murl + '/' + this.newcontact.surl + '/question/' + obj.id).then(response => {
+      this.$http.delete('/fask/' + this.newcontact.murl + '/' + this.newcontact.surl + '/question/' + obj.id).then(response => {
         console.log(this.response)
       }, response => {
         console.log(response)

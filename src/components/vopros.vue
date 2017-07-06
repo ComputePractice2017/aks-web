@@ -1,6 +1,7 @@
 <template>
     <div class="vopros">
         <div class="container">
+          {{$route.params.vopros}}
            
             <form class="form-inline">
 
@@ -62,7 +63,8 @@ export default {
     }
   },
   mounted: function () {
-    this.$http.get('/persons').then(response => {
+    this.vopros = this.$route.params.vopros
+    this.$http.get('/fask/' + this.vopros).then(response => {
       this.contacts = response.body
       console.log(this.contacts)
     }, response => {
@@ -81,7 +83,7 @@ export default {
       obj.ask = this.newcontact.ask
       obj.answer = this.newcontact.answer
       this.contacts.push(obj)
-      this.$http.post('/persons', obj).then(response => {
+      this.$http.post('/fask/' + this.newcontact.murl + '/question', obj).then(response => {
         console.log(this.response)
       }, response => {
         console.log(response)
@@ -92,7 +94,7 @@ export default {
       this.newcontact = obj
     },
     endEdit: function () {
-      this.$http.put('/persons/' + this.newcontact.id, this.newcontact).then(response => {
+      this.$http.put('/fask/{guid}/question/' + this.newcontact.id, this.newcontact).then(response => {
         console.log(this.response)
       }, response => {
         console.log(response)
