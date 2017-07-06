@@ -47,6 +47,7 @@ export default {
 
       if (this.ssilka === null) {
         this.ssilka = []
+        console.log(this.ssilka)
       }
        var obj = {
         'murl': '',
@@ -54,9 +55,8 @@ export default {
       }
       obj.murl = this.newssilka.murl
       obj.surl = this.newssilka.surl
-      this.ssilka.push(obj)
 
-      this.otvet = '/' + this.newssilka.murl + '/' + this.newssilka.surl
+      this.otvet = '/' + 'this.newssilka.murl' + '/' + this.newssilka.surl
       this.vopros = '/' + this.newssilka.murl
       
     
