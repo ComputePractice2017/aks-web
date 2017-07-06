@@ -34,12 +34,16 @@ export default {
   },
   methods: {
     ssilki: function () {
+      
       this.ssilka.push(obj)
       this.$http.post('/fask', obj).then(response => {
         console.log(this.response)
       }, response => {
         console.log(response)
       })
+      if (this.response === null) {
+        this.response = []
+      }
       this.otvet = ('/' + obj.murl + '/' + obj.surl, this.newssilka)
       this.vopros = ('/' + obj.murl, this.newssilka)
       var obj = {
