@@ -65,7 +65,8 @@ export default {
     }
   },
   mounted: function () {
-    this.$http.get('/fask/' + this.newcontact.murl + '/' + this.newcontact.surl + '/question/').then(response => {
+    this.otvet = this.$route.params.otvet
+    this.$http.get('/fask/' + this.otvet).then(response => {
       this.contacts = response.body
       console.log(this.contacts)
     }, response => {
