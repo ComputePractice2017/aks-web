@@ -56,7 +56,7 @@ export default {
       obj.murl = this.newssilka.murl
       obj.surl = this.newssilka.surl
 
-      this.otvet = '/' + this.newssilka.murl + '/' + this.newssilka.surl
+      this.otvet = '/' + obj.murl + '/' + this.newssilka.surl
       this.vopros = '/' + this.newssilka.murl
       
     
