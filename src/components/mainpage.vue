@@ -30,6 +30,10 @@ export default {
       message1: '',
       vopros: '',
       otvet: ''
+      newssilka:{
+        'murl':'',
+        'surl':''
+      },
     }
   },
   methods: {
@@ -47,13 +51,16 @@ export default {
         this.ssilka = []
       }
       this.ssilka.push(obj)
+      obj.murl = this.newssilka.murl
+      obj.surl = this.newssilka.surl
+      this.ssilka.push(obj)
       this.otvet = ('/' + obj.murl + '/' + obj.surl, this.newssilka)
       this.vopros = ('/' + obj.murl, this.newssilka)
       var obj = {
         'murl': '',
         'surl': ''
       }
-     
+    
     }
   }
 }
