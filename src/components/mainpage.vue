@@ -28,10 +28,8 @@ export default {
       msg: 'Anonimus fask',
       vopros: '',
       otvet: '',
-      newssilka: {
-        'murl': '',
-        'surl': ''
-      },
+      murl: '',
+      surl: ''
     }
   },
   methods: {
@@ -41,7 +39,6 @@ export default {
       this.$http.post('/fask', obj).then(response => {
         this.ssilka=response.body
         console.log(this.ssilka)
-        console.log(this.newssilka.murl)
       }, response => {
         console.log(response)
       })
@@ -53,11 +50,11 @@ export default {
         'murl': '',
         'surl': ''
       }
-      obj.murl = this.newssilka.murl
-      obj.surl = this.newssilka.surl
+      obj.murl = this.ssilka.murl
+      obj.surl = this.ssilka.surl
 
-      this.otvet = '/' + obj.murl + '/' + this.newssilka.surl
-      this.vopros = '/' + this.newssilka.murl
+      this.otvet = '/' + this.ssilka.murl + '/' + this.ssilka.surl
+      this.vopros = '/' + this.ssilka.murl
       
     
     }

@@ -82,7 +82,7 @@ export default {
       }
       obj.ask = this.newcontact.ask
       obj.answer = this.newcontact.answer
-      this.contacts.push(obj)
+     
       this.$http.post('/fask/' + this.newcontact.murl + '/question', obj).then(response => {
         console.log(this.response)
       }, response => {
