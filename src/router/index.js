@@ -3,13 +3,15 @@ import Router from 'vue-router'
 import mainpage from '@/components/mainpage'
 import vopros from '@/components/vopros'
 import otvet from '@/components/otvet'
+import VueResource from 'vue-resource'
 
 Vue.use(Router)
+Vue.use(VueResource)
 
 export default new Router({
   routes: [
     {
-      path: '/vopros',
+      path: '/:vopros',
       name: 'vopros',
       component: vopros
     },
@@ -19,7 +21,7 @@ export default new Router({
       component: mainpage
     },
     {
-      path: '/otvet',
+      path: '/:vopros/:otvet',
       name: 'otvet',
       component: otvet
     }

@@ -65,7 +65,7 @@ export default {
     }
   },
   mounted: function () {
-    this.$http.get('/fask/{guid}/{guid1}').then(response => {
+    this.$http.get('/fask/' + this.newcontact.murl + '/' + this.newcontact.surl + '/question/').then(response => {
       this.contacts = response.body
       console.log(this.contacts)
     }, response => {
@@ -84,7 +84,7 @@ export default {
       obj.ask = this.newcontact.ask
       obj.answer = this.newcontact.answer
       this.contacts.push(obj)
-      this.$http.post('/persons', obj).then(response => {
+      this.$http.post('/fask/' + this.newcontact.murl + '/' + this.newcontact.surl + '/question/', obj).then(response => {
         console.log(this.response)
       }, response => {
         console.log(response)
@@ -95,20 +95,20 @@ export default {
       this.newcontact = obj
     },
     endEdit: function () {
-      this.$http.put('/persons/' + this.newcontact.id, this.newcontact).then(response => {
+      this.$http.put('/fask/' + this.newcontact.murl + '/' + this.newcontact.surl + '/question/' + this.newcontact.id, this.newcontact).then(response => {
         console.log(this.response)
       }, response => {
         console.log(response)
       })
       this.edit = false
       var obj = {
-        'nask': '',
+        'ask': '',
         'answer': ''
       }
       this.newcontact = obj
     },
     deleteContact: function (obj) {
-      this.$http.delete('/persons/' + obj.id).then(response => {
+      this.$http.delete('//fask/' + this.newcontact.murl + '/' + this.newcontact.surl + '/question/' + obj.id).then(response => {
         console.log(this.response)
       }, response => {
         console.log(response)
