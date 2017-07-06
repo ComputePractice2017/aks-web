@@ -53,7 +53,7 @@ export default {
       obj.murl = this.ssilka.murl
       obj.surl = this.ssilka.surl
 
-      this.otvet = '/' + this.ssilka.murl + '/' + this.ssilka.surl
+      this.otvet = ('/' + this.ssilka.murl + '/' + this.ssilka.surl)
       this.vopros = '/' + this.ssilka.murl
       
     
