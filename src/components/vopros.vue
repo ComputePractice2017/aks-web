@@ -47,7 +47,8 @@ export default {
         'ask': '',
         'answer': ''
       },
-      search: ''
+      search: '',
+      vopros: ''
     }
   },
   computed: {
@@ -82,8 +83,8 @@ export default {
       }
       obj.ask = this.newcontact.ask
       obj.answer = this.newcontact.answer
-     
-      this.$http.post('/fask/' + this.newcontact.murl + '/question', obj).then(response => {
+      this.vopros = this.$route.params.vopros
+      this.$http.post('/fask/' + this.vopros + '/question', obj).then(response => {
         console.log(this.response)
       }, response => {
         console.log(response)

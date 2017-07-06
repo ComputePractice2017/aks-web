@@ -35,10 +35,13 @@ export default {
   methods: {
     ssilki: function () {
       
-      
+      var obj = {
+        'murl': '',
+        'surl': ''
+      }
       this.$http.post('/fask', obj).then(response => {
         this.ssilka=response.body
-        console.log(this.ssilka)
+        console.log(this.murl)
       }, response => {
         console.log(response)
       })
@@ -46,10 +49,7 @@ export default {
       if (this.ssilka === null) {
         this.ssilka = []
       }
-       var obj = {
-        'murl': '',
-        'surl': ''
-      }
+      
       obj.murl = this.ssilka.murl
       obj.surl = this.ssilka.surl
 
