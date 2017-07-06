@@ -41,7 +41,7 @@ export default {
       }
       this.$http.post('/fask', obj).then(response => {
         this.ssilka=response.body
-        console.log(this.murl)
+        console.log(this.ssilka)
       }, response => {
         console.log(response)
       })
