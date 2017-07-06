@@ -96,7 +96,7 @@ export default {
       this.newcontact = obj
     },
     endEdit: function () {
-      this.$http.put('/fask/' + this.newcontact.murl + '/' + this.newcontact.surl + '/question/' + this.newcontact.id, this.newcontact).then(response => {
+      this.$http.post('/fask/' + this.newcontact.murl + '/' + this.newcontact.surl + '/question/' + this.newcontact.id, this.newcontact).then(response => {
         console.log(this.response)
       }, response => {
         console.log(response)

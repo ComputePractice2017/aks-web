@@ -41,13 +41,13 @@ export default {
       this.$http.post('/fask', obj).then(response => {
         this.ssilka=response.body
         console.log(this.ssilka)
+        console.log(this.newssilka.murl)
       }, response => {
         console.log(response)
       })
 
       if (this.ssilka === null) {
         this.ssilka = []
-        console.log(this.ssilka)
       }
        var obj = {
         'murl': '',
@@ -56,7 +56,7 @@ export default {
       obj.murl = this.newssilka.murl
       obj.surl = this.newssilka.surl
 
-      this.otvet = '/' + 'this.newssilka.murl' + '/' + this.newssilka.surl
+      this.otvet = '/' + this.newssilka.murl + '/' + this.newssilka.surl
       this.vopros = '/' + this.newssilka.murl
       
     
