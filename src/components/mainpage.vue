@@ -35,23 +35,25 @@ export default {
   methods: {
     ssilki: function () {
       
-      this.ssilka.push(obj)
+      
       this.$http.post('/fask', obj).then(response => {
-        console.log(this.response)
+        this.ssilka=response.body
+        console.log(this.ssilka)
       }, response => {
         console.log(response)
       })
-      if (this.response === null) {
-        this.response = []
+
+      if (this.ssilka === null) {
+        this.ssilka = []
       }
+      this.ssilka.push(obj)
       this.otvet = ('/' + obj.murl + '/' + obj.surl, this.newssilka)
       this.vopros = ('/' + obj.murl, this.newssilka)
       var obj = {
         'murl': '',
         'surl': ''
       }
-      obj.murl = this.newssilka.murl
-      obj.surl = this.newssilka.surl
+     
     }
   }
 }
